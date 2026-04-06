@@ -1,0 +1,10 @@
+numpy
+pandas
+librosa 
+scikit-learn 
+tqdm 
+openpyxl
+jupyter
+openai-whisper
+transformers 
+streamlit
