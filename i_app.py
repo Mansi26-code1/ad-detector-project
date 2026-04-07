@@ -90,8 +90,8 @@ with tab1:
 
         col1, col2, col3 = st.columns(3)
         col1.metric("Model", "Voting Classifier")
-        col2.metric("Recall (AD)", "66%")
-        col3.metric("F1 Score", "62%")
+        col2.metric("Recall (AD)", "76%")
+        col3.metric("F1 Score", "82%")
 
 # ── Tab 2: Text ───────────────────────────────────────────────────────────────
 with tab2:
@@ -135,7 +135,7 @@ with tab3:
 
     | Model | Input | Recall | F1 |
     |-------|-------|--------|----|
-    | Voting Classifier (LR + RF) | Audio features (MFCC, Chroma, ZCR) | 66% | 62% |
+    | Voting Classifier (LR + RF) | Audio features (MFCC, Chroma, ZCR) | 76% | 82% |
     | TF-IDF + Logistic Regression | Speech transcript | 83% | 79% |
 
     **Why recall?** In medical AI, missing an actual Alzheimer's patient (false negative)
