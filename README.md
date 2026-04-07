@@ -50,6 +50,7 @@ streamlit run app.py
 ---
 ## 📁 Project Structure
 
+```
 ad-detector-project/
 ├── app.py                          # Streamlit web app
 ├── requirements.txt
@@ -65,6 +66,7 @@ ad-detector-project/
 └── data/                           # Not committed — see Dataset section
     ├── alzheimer_audio_info.xlsx
     └── audio/
+```
 ---                    
 ## 📊 Dataset
 
