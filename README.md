@@ -46,6 +46,7 @@ git clone https://github.com/Mansi26-code1/ad-detector-project.git
 cd ad-detector-project
 pip install -r requirements.txt
 streamlit run app.py
+```
 ---
 ## 📁 Project Structure
 
