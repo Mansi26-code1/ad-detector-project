@@ -76,10 +76,32 @@ ad-detector-project/
 - **48 Healthy Control (HC) subjects**
 - **Task:** Cookie Theft picture description (standard neuropsychological test)
 ---
-## 🛠 Tech Stack
+## 🛠️ Tech Stack
+---
 
-**Python** · **Librosa** · **OpenAI Whisper** · **Scikit-learn** · **TF-IDF** ·  
-**Pandas / Numpy** · **Imbalanced-learn (SMOTE)** · **Streamlit** · **Pickle**
+**💻 Programming & Data**
+- Python  
+- NumPy  
+- Pandas  
+
+**🤖 Machine Learning**
+- Scikit-learn  
+- Logistic Regression  
+- TF-IDF  
+- Voting Classifier  
+- Imbalanced-learn (SMOTE)
+
+**🎙 Audio Processing**
+- Librosa  
+- MFCC / Chroma / Spectral Features  
+- Pre-emphasis Filtering  
+
+**🗣 Speech Recognition**
+- OpenAI Whisper  
+
+**🖥 Web App**
+- Streamlit  
+- Pickle  
 ---
 ## 🧩 Key Design Decisions
 
