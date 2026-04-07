@@ -37,14 +37,17 @@ BERT was tested but led to overfitting on this small dataset (99 subjects). TF-I
 ---
 
 ## Demo
+## 🚀 How to Run the Project
+
+Follow these steps to run the Alzheimer Detection project on your system:
 
 ```bash
 git clone https://github.com/Mansi26-code1/ad-detector-project.git
 cd ad-detector-project
 pip install -r requirements.txt
-streamlit run app.py 
-
-## Project Structure
+streamlit run app.py
+---
+## 📁 Project Structure
 
 ad-detector-project/
 ├── app.py                          # Streamlit web app
@@ -60,42 +63,57 @@ ad-detector-project/
 │   └── improved_features_with_id.csv
 └── data/                           # Not committed — see Dataset section
     ├── alzheimer_audio_info.xlsx
-    └── audio/                      # Subject subfolders (e.g. S001_AD/, S002_HC/)
-
-## Dataset
+    └── audio/
+---                    
+## 📊 Dataset
 
 **ADReSS Challenge — INTERSPEECH 2020**
+
 - **51 Alzheimer's Disease (AD) subjects**
 - **48 Healthy Control (HC) subjects**
 - **Task:** Cookie Theft picture description (standard neuropsychological test)
+---
+## 🛠 Tech Stack
 
-## Tech Stack
+**Python** · **Librosa** · **OpenAI Whisper** · **Scikit-learn** · **TF-IDF** ·  
+**Pandas / Numpy** · **Imbalanced-learn (SMOTE)** · **Streamlit** · **Pickle**
+---
+## 🧩 Key Design Decisions
 
-**Python** · **Librosa** · **OpenAI Whisper** · **Scikit-learn** · **TF-IDF** · **Pandas / Numpy** · **Imbalanced-learn (SMOTE)** · **Streamlit** · **Pickle**
+- **GroupShuffleSplit for audio model:**  
+  Multiple recordings exist per subject. Without group-aware splitting, the same speaker could appear in both train and test — the model would learn *speaker identity*, not *disease patterns*.
 
-## Key Design Decisions
-#GroupShuffleSplit for audio model: Multiple recordings exist per subject. Without group-aware splitting, the same speaker could appear in both train and test — the model would learn speaker voice, not disease patterns.
+- **Pre-emphasis filter:**  
+  Applied before feature extraction to boost high-frequency components that carry crucial speech information.
 
-#Pre-emphasis filter**: Applied before feature extraction to boost high-frequency components that carry more speech information.
-#class_weight='balanced': Applied to all classifiers because the dataset is slightly imbalanced (51 AD vs 48 HC).
+- **class_weight='balanced':**  
+  Used in all classifiers because the dataset has mild imbalance (51 AD vs 48 HC).
 
-##Limitations
--**Small dataset (99 subjects) — results should be validated on larger cohorts
--**Models not tested on spontaneous/conversational speech — only Cookie Theft task
+---
 
-##Future Improvements
--** Fine-tune ClinicalBERT on a larger AD transcript dataset
- **Add speaker diarisation to separate patient from interviewer speech
- **Collect more data via federated learning from multiple hospital
+## ⚠️ Limitations
 
-##Reference
-Li, J. et al. (2022). An Alzheimer's Disease Detection Method Based on
-Combining Audio Features and Linguistic Information.
-IEEE Transactions on Industrial Informatics, 18(3)
+- **Small dataset (99 subjects)** — results should be validated on larger, more diverse cohorts.  
+- **Model trained only on Cookie Theft task** — not tested on free or conversational speech.
 
-## Author
+---
+
+## 🚀 Future Improvements
+
+- **Fine-tune ClinicalBERT** on a larger Alzheimer's transcript dataset.  
+- **Add speaker diarisation** to separate patient vs interviewer audio.  
+- **Collect multi-center data** via federated learning to improve generalization.
+
+---
+
+## 📚 Reference
+
+Li, J. et al. (2022). *An Alzheimer's Disease Detection Method Based on Combining Audio Features and Linguistic Information.*  
+IEEE Transactions on Industrial Informatics, 18(3).
+
+---
+
+## 👩‍💻 Author
 
 **Mansi Pandey** — B.Tech CSE, AKTU Lucknow
-
-
 
