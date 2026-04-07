@@ -5,3 +5,50 @@ __pycache__/
 *.wav
 data/
 scaler.pkl
+# Ignore virtual environments
+venv/
+env/
+.venv/
+ENV/
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore logs
+*.log
+
+# Ignore environment variables
+.env
+.env.*
+
+# Ignore model checkpoints
+*.h5
+*.sav
+*.pt
+*.pth
+
+# Ignore large audio/video files
+*.wav
+*.mp4
+*.mp3
+
+# Ignore PyCharm/VS Code settings
+.vscode/
+.idea/
+
+# Ignore build files
+build/
+dist/
+
+# Ignore Streamlit cache
+.streamlit/
