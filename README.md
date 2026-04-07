@@ -1,71 +1,101 @@
-# 🧠 Alzheimer's Disease Detection System
+# 🧠 Alzheimer's Disease Detection 
 
-Early-stage Alzheimer's detection from speech using 
-multimodal AI — acoustic + linguistic analysis.
-
-> Inspired by ADDetector — IEEE Transactions on 
-> Industrial Informatics, 2022
+> Early-stage Alzheimer's detection using multimodal AI — acoustic + linguistic analysis of speech.  
+> Inspired by: *Li et al., IEEE Transactions on Industrial Informatics, Vol. 18, No. 3, 2022*
 
 ---
 
-## 🔴 Problem
+## Problem
 
-Alzheimer's affects 55 million people globally.
-Early diagnosis requires expensive clinical tests.
-This system detects AD from simple speech recordings
-— accessible via any smart device.
+Alzheimer's disease affects **55 million people** globally. Early diagnosis typically requires expensive neuropsychological tests and specialist visits. This project explores whether a **simple speech recording** — something anyone can do on a smartphone — carries enough signal to flag early-stage AD.
 
 ---
 
-## ✅ Solution
+## Solution
 
-Two-model multimodal approach:
+Two independent models analyse different aspects of speech:
 
-| Model | Input | Recall | F1 |
-|-------|-------|--------|----|
-| Voting Classifier | Audio (MFCC + Chroma + ZCR) | 66% | 62% |
-| TF-IDF + Logistic Regression | Speech Transcript | 83% | 79% |
+| Model | Input | Recall | F1 | Notes |
+|-------|-------|--------|----|-------|
+| Voting Classifier (Random Forest + Logistic Regression) | Audio — MFCC, Chroma, ZCR | HC: 0.93 / AD: 0.76 | HC: 0.88 / AD: 0.82 | File-level acoustic features, 173 samples |
+| TF-IDF + Logistic Regression | Speech transcript | 0.90 ± 0.06 | 0.81 ± 0.02 | 5-Fold CV on text features (Whisper ASR → NLP pipeline) |
+| Combined Model | Audio + Text | HC: 0.82 / AD: 0.98 | HC: 0.88 / AD: 0.96 | 80 samples; final combined audio + linguistic probabilities |
 
-**Why recall matters more than accuracy in medical AI:**
-Missing an Alzheimer's patient is far costlier than
-a false alarm. High recall = fewer patients missed.
+**Other Metrics for Combined Model:**
+
+Accuracy : 0.94
+Macro avg : Recall: 0.90 | F1: 0.92
+Weighted avg : Recall: 0.94 | F1: 0.94
+
+
+**Why recall over accuracy?**  
+In medical AI, a missed Alzheimer's patient (false negative) is far costlier than a false alarm. High recall = fewer patients slipping through undetected.
+
+**Why TF-IDF and not BERT?**  
+BERT was tested but led to overfitting on this small dataset (99 subjects). TF-IDF with bigrams generalised better — a known finding on small clinical NLP datasets.
+
 ---
 
-## 🚀 Run Locally
+## Demo
+
 ```bash
 git clone https://github.com/Mansi26-code1/ad-detector-project.git
 cd ad-detector-project
 pip install -r requirements.txt
-streamlit run app.py
-```
+streamlit run app.py 
 
----
+## Project Structure
 
-## 📊 Dataset
+ad-detector-project/
+├── app.py                          # Streamlit web app
+├── requirements.txt
+├── notebooks/
+│   ├── 01_data_train.ipynb         # Feature extraction + audio model training
+│   ├── linguistic_model.ipynb      # Whisper ASR + TF-IDF + LR training
+│   ├── combined_model.ipynb        # Combined model evaluation
+│   ├── models/
+│   │   ├── voting_model.pkl        # Trained audio model
+│   │   ├── scaler_new.pkl          # Feature scaler
+│   │   └── linguistic_model.pkl    # Trained text pipeline
+│   └── improved_features_with_id.csv
+└── data/                           # Not committed — see Dataset section
+    ├── alzheimer_audio_info.xlsx
+    └── audio/                      # Subject subfolders (e.g. S001_AD/, S002_HC/)
 
-ADReSS Challenge — INTERSPEECH 2020
-- 51 AD subjects
-- 48 Healthy Control subjects
+## Dataset
 
----
+**ADReSS Challenge — INTERSPEECH 2020**
+- **51 Alzheimer's Disease (AD) subjects**
+- **48 Healthy Control (HC) subjects**
+- **Task:** Cookie Theft picture description (standard neuropsychological test)
 
-## 🛠️ Tech Stack
+## Tech Stack
 
-Python • Librosa • OpenAI Whisper • Scikit-learn
-TF-IDF • Streamlit • Pickle
+**Python** · **Librosa** · **OpenAI Whisper** · **Scikit-learn** · **TF-IDF** · **Pandas / Numpy** · **Imbalanced-learn (SMOTE)** · **Streamlit** · **Pickle**
 
----
+## Key Design Decisions
+#GroupShuffleSplit for audio model: Multiple recordings exist per subject. Without group-aware splitting, the same speaker could appear in both train and test — the model would learn speaker voice, not disease patterns.
 
-## 📖 Reference
+#Pre-emphasis filter**: Applied before feature extraction to boost high-frequency components that carry more speech information.
+#class_weight='balanced': Applied to all classifiers because the dataset is slightly imbalanced (51 AD vs 48 HC).
 
-Li et al., IEEE Transactions on Industrial 
-Informatics, Vol. 18, No. 3, March 2022.
+##Limitations
+-**Small dataset (99 subjects) — results should be validated on larger cohorts
+-**Models not tested on spontaneous/conversational speech — only Cookie Theft task
 
----
+##Future Improvements
+-** Fine-tune ClinicalBERT on a larger AD transcript dataset
+ **Add speaker diarisation to separate patient from interviewer speech
+ **Collect more data via federated learning from multiple hospital
 
-## 👩‍💻 Author
+##Reference
+Li, J. et al. (2022). An Alzheimer's Disease Detection Method Based on
+Combining Audio Features and Linguistic Information.
+IEEE Transactions on Industrial Informatics, 18(3)
+
+## Author
 
 **Mansi Pandey** — B.Tech CSE, AKTU Lucknow
 
-[GitHub](https://github.com/Mansi26-code1)
+
 

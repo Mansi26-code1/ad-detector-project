@@ -8,3 +8,5 @@ jupyter
 openai-whisper
 transformers 
 streamlit
+matplotlib
+ pydub
