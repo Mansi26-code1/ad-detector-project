@@ -26,7 +26,13 @@ Two independent models analyse different aspects of speech:
 Accuracy : 0.94
 Macro avg : Recall: 0.90 | F1: 0.92
 Weighted avg : Recall: 0.94 | F1: 0.94
+## Confusion Matrix (Audio Model)
 
+![Audio Confusion Matrix](notebooks/confusion_matrix_audio.png)
+
+## Confusion Matrix (Linguistic Model)
+
+![Linguistic Confusion Matrix](notebooks/confusion_matrix_linguistic.png)
 
 **Why recall over accuracy?**  
 In medical AI, a missed Alzheimer's patient (false negative) is far costlier than a false alarm. High recall = fewer patients slipping through undetected.
