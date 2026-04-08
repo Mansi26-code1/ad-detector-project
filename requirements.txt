@@ -6,7 +6,7 @@ tqdm
 openpyxl
 jupyter
 openai-whisper
-transformers 
+
 streamlit
 matplotlib
- pydub
+ 
