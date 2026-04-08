@@ -2,7 +2,7 @@
 
 > Early-stage Alzheimer's detection using multimodal AI — acoustic + linguistic analysis of speech.  
 > Inspired by: *Li et al., IEEE Transactions on Industrial Informatics, Vol. 18, No. 3, 2022*
-
+**Live Demo:** [Try the App](https://ad-detector-project-xmsvtqeynh8h3bmqpqmwp5.streamlit.app/)
 ---
 
 ## Problem
