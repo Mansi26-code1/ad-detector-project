@@ -51,7 +51,7 @@ Follow these steps to run the Alzheimer Detection project on your system:
 git clone https://github.com/Mansi26-code1/ad-detector-project.git
 cd ad-detector-project
 pip install -r requirements.txt
-streamlit run i_app.py
+streamlit run app.py
 ```
 ---
 ## 📁 Project Structure
